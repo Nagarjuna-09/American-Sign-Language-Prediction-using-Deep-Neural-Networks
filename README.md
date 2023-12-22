@@ -31,3 +31,15 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img
+import pandas as pd
+
+## Parsing the dataset (Splitting data into Training & Test datasets)
+This function reads a file passed as input and return 2 numpy arrays, one containing the labels and one containing the 28x28 representation of each image within the file.
+
+The first row contains the column headers, so you should ignore it.
+
+Each successive row contains 785 comma-separated values between 0 and 255
+
+The first value is the label
+
+The rest are the pixel values for that picture

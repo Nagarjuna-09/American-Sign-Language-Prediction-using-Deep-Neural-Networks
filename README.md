@@ -1,6 +1,6 @@
 ﻿# American-Sign-Language-Prediction-using-Deep-Neural-Networks in Real-time (94.85% Accuracy)
 
-![Sign Language Prediction](https://miro.medium.com/v2/resize:fit:665/1*MLudTwKUYiCYQE0cV7p6aQ.png)
+![Sign Language Prediction](images/Sign_language_images.png)
 
 ## Overview
 
@@ -99,3 +99,97 @@ plot_categories(training_images, training_labels)
 ```
 
 ![Project Logo](images/sample_images.png)
+
+## Creating the generators for the CNN
+Now that we have successfully organized the data in a way that can be easily fed to Keras' ImageDataGenerator, it is time for you to code the generators that will yield batches of images, both for training and validation. For this complete the train_val_generators function below.
+```bash
+def train_val_generators(training_images, training_labels, validation_images, validation_labels):
+  """
+  Creates the training and validation data generators
+​
+  Args:
+    training_images (array): parsed images from the train CSV file
+    training_labels (array): parsed labels from the train CSV file
+    validation_images (array): parsed images from the test CSV file
+    validation_labels (array): parsed labels from the test CSV file
+​
+  Returns:
+    train_generator, validation_generator - tuple containing the generators
+  """
+# Expanding the images to include  color dimension to it
+  training_images = np.expand_dims(training_images, axis=3)
+  validation_images = np.expand_dims(validation_images, axis=3)
+​
+  # setting arguments to augment the images to enhance the training set diversity
+  train_datagen = ImageDataGenerator(
+      rescale = 1./255,
+        rotation_range=40,
+      width_shift_range=0.2,
+      height_shift_range=0.2,
+      shear_range=0.2,
+      zoom_range=0.2,
+      horizontal_flip=True,
+      fill_mode='nearest')
+​
+  # Storing the augmented training images
+  train_generator = train_datagen.flow(x=training_images,
+                                       y=training_labels,
+                                       batch_size=32)
+​
+  validation_datagen = ImageDataGenerator(rescale = 1./255)
+​
+  # Storing the augmented testing set images
+  validation_generator = validation_datagen.flow(x=validation_images,
+                                                 y=validation_labels,
+                                                 batch_size=32)
+​
+  return train_generator, validation_generator
+```
+
+## Coding the CNN
+Define the architecture of the model.
+
+The create_modelfunction returns a Keras' model that uses the Sequential API.
+
+The last layer of your model is built to have a number of units equal to the number of letters in the English alphabet. It uses an activation function that will output the probabilities per letter. So Softmax function is used.
+
+Aside from defining the architecture of the model, compiling it so make sure to use a loss function is suitable for multi-class classification.
+```bash
+## # Sending training data into the built architecture to train
+model = create_model()
+
+# Training the model
+history = model.fit(train_generator,
+                    epochs=15,
+                    validation_data=validation_generator)
+```
+![Convolutional_Layer](images/CNN.png)
+![Max_Pooling_Layer]images/Max_pooling.png)
+![Flatten_Layer](images/Flatten.png)
+![Dense_Layer](images/Dense.png)
+
+## Plotting Loss & Accuracy
+```bash
+# Plotting the chart for accuracy and loss on both training and validation
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(len(acc))
+
+plt.plot(epochs, acc, 'r', label='Training accuracy')
+plt.plot(epochs, val_acc, 'b', label='Validation accuracy')
+plt.title('Training and validation accuracy')
+plt.legend()
+plt.figure()
+
+plt.plot(epochs, loss, 'r', label='Training Loss')
+plt.plot(epochs, val_loss, 'b', label='Validation Loss')
+plt.title('Training and validation loss')
+plt.legend()
+
+plt.show()
+```
+![Accuracy_Plots](images/accuracy.png)
+![Loss_Plots](images/loss.png)

@@ -1,7 +1,5 @@
 ﻿# American-Sign-Language-Prediction-using-Deep-Neural-Networks in Real-time
 
-# Sign Language Prediction Using Deep Neural Networks in Real-time
-
 ![Sign Language Prediction](path/to/your/image.png)
 
 ## Overview

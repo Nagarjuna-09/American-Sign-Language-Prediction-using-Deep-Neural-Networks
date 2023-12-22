@@ -1,4 +1,4 @@
-﻿# American-Sign-Language-Prediction-using-Deep-Neural-Networks in Real-time
+﻿# American-Sign-Language-Prediction-using-Deep-Neural-Networks in Real-time (94.85% Accuracy)
 
 ![Sign Language Prediction](https://miro.medium.com/v2/resize:fit:665/1*MLudTwKUYiCYQE0cV7p6aQ.png)
 
@@ -73,3 +73,29 @@ def parse_data_from_input(filename):
 
     return images, labels
 ```
+## Visualizing the numpy arrays (Single rows in the dataset)
+Now that we have converted the initial csv data into a format that is compatible with computer vision tasks, lets see how the images of the dataset look like:
+
+```bash
+# Plotting a sample of 10 images from the training set for visualization
+def plot_categories(training_images, training_labels):
+  fig, axes = plt.subplots(1, 10, figsize=(16, 15))
+  axes = axes.flatten()
+  letters = list(string.ascii_lowercase)
+
+  for k in range(10):
+    img = training_images[k]
+    img = np.expand_dims(img, axis=-1)
+    img = array_to_img(img)
+    ax = axes[k]
+    ax.imshow(img, cmap="Greys_r")
+    ax.set_title(f"{letters[int(training_labels[k])]}")
+    ax.set_axis_off()
+
+  plt.tight_layout()
+  plt.show()
+
+plot_categories(training_images, training_labels)
+```
+
+![Project Logo](images/sample_images.png)

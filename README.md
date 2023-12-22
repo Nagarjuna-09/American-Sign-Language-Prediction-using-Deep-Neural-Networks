@@ -163,9 +163,16 @@ history = model.fit(train_generator,
                     epochs=15,
                     validation_data=validation_generator)
 ```
+### Convolutional Layer
 ![Convolutional_Layer](images/CNN.png)
+
+### Max Pooling Layer
 ![Max_Pooling_Layer](images/Max_pooling.png)
+
+### Flatten Layer
 ![Flatten_Layer](images/Flatten.png)
+
+### Dense Layer
 ![Dense_Layer](images/Dense.png)
 
 ## Plotting Loss & Accuracy

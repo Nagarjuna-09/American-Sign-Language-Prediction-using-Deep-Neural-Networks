@@ -32,7 +32,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, array_to_img
 import pandas as pd
-
+```
 ## Parsing the dataset (Splitting data into Training & Test datasets)
 This function reads a file passed as input and return 2 numpy arrays, one containing the labels and one containing the 28x28 representation of each image within the file.
 

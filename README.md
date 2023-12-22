@@ -1,6 +1,6 @@
 ﻿# American-Sign-Language-Prediction-using-Deep-Neural-Networks in Real-time
 
-![Sign Language Prediction](path/to/your/image.png)
+![Sign Language Prediction]([path/to/your/image.png](https://miro.medium.com/v2/resize:fit:665/1*MLudTwKUYiCYQE0cV7p6aQ.png))
 
 ## Overview
 

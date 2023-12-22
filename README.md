@@ -198,5 +198,8 @@ plt.legend()
 
 plt.show()
 ```
+### Training and Validation Accuracy
 ![Accuracy_Plots](images/accuracy.png)
+
+### Training and Validation Loss
 ![Loss_Plots](images/loss.png)

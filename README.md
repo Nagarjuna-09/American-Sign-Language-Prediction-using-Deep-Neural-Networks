@@ -164,7 +164,7 @@ history = model.fit(train_generator,
                     validation_data=validation_generator)
 ```
 ![Convolutional_Layer](images/CNN.png)
-![Max_Pooling_Layer]images/Max_pooling.png)
+![Max_Pooling_Layer](images/Max_pooling.png)
 ![Flatten_Layer](images/Flatten.png)
 ![Dense_Layer](images/Dense.png)
 
